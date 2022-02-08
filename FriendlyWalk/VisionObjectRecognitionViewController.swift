@@ -9,9 +9,19 @@ import UIKit
 import AVFoundation
 import Vision
 
+
+
 class VisionObjectRecognitionViewController: ViewController {
     
     private var detectionOverlay: CALayer! = nil
+    
+    
+    let synthesizer = AVSpeechSynthesizer()
+    func speak(toSay: String) {
+        let utterance = AVSpeechUtterance(string: toSay)
+    
+        synthesizer.speak(utterance)
+    }
     
     // Vision parts
     private var requests = [VNRequest]()
@@ -133,10 +143,13 @@ class VisionObjectRecognitionViewController: ViewController {
         var label = identifier
         if (identifier == "traffic_light_red"){
             label = "red"
+            speak(toSay: label)
         }else if (identifier == "traffic_light_green"){
             label = "green"
+            speak(toSay: label)
         }else if (identifier == "traffic_light_na"){
             label = "yellow"
+            speak(toSay: label)
 
         }
         
