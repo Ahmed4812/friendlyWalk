@@ -15,13 +15,7 @@ class VisionObjectRecognitionViewController: ViewController {
     
     private var detectionOverlay: CALayer! = nil
     
-    
-    let synthesizer = AVSpeechSynthesizer()
-    func speak(toSay: String) {
-        let utterance = AVSpeechUtterance(string: toSay)
-    
-        synthesizer.speak(utterance)
-    }
+    var crossingState = CrossingState()
     
     // Vision parts
     private var requests = [VNRequest]()
@@ -52,6 +46,14 @@ class VisionObjectRecognitionViewController: ViewController {
         return error
     }
     
+    //used for correcting out of index for deleting other labels
+    func addExtrachar(str: String) -> String{
+        if str.count < 4{
+            return str + "****"
+        }
+        return str
+    }
+    
     func drawVisionRequestResults(_ results: [Any]) {
         CATransaction.begin()
         CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
@@ -61,7 +63,24 @@ class VisionObjectRecognitionViewController: ViewController {
                 continue
             }
             // Select only the label with the highest confidence.
-            let topLabelObservation = objectObservation.labels[0]
+            var topLabelObservation = objectObservation.labels[0]
+            
+            /**
+                            This section is not necessary but used to imporve the accuracy only for traffic light
+             */
+            var i=0;
+            var labelOfTop = addExtrachar(str: topLabelObservation.identifier)
+            while (labelOfTop[labelOfTop.index(labelOfTop.startIndex, offsetBy: 3)] != "f" && (i < 3) ){
+                i+=1
+                print(labelOfTop[labelOfTop.index(labelOfTop.startIndex, offsetBy: 3)])
+                topLabelObservation = objectObservation.labels[i]
+                labelOfTop = addExtrachar(str: topLabelObservation.identifier)
+            }
+            if i == 3{
+                topLabelObservation = objectObservation.labels[0]
+            }
+            /***************************/
+            
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(bufferSize.width), Int(bufferSize.height))
             
             let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds)
@@ -69,6 +88,7 @@ class VisionObjectRecognitionViewController: ViewController {
             let textLayer = self.createTextSubLayerInBounds(objectBounds,
                                                             identifier: topLabelObservation.identifier,
                                                             confidence: topLabelObservation.confidence)
+            print(textLayer)
             shapeLayer.addSublayer(textLayer)
             detectionOverlay.addSublayer(shapeLayer)
         }
@@ -143,13 +163,14 @@ class VisionObjectRecognitionViewController: ViewController {
         var label = identifier
         if (identifier == "traffic_light_red"){
             label = "red"
-            speak(toSay: label)
+            crossingState.update(result: label)
+            
         }else if (identifier == "traffic_light_green"){
             label = "green"
-            speak(toSay: label)
+            crossingState.update(result: label)
         }else if (identifier == "traffic_light_na"){
             label = "yellow"
-            speak(toSay: label)
+            crossingState.update(result: label)
 
         }
         
