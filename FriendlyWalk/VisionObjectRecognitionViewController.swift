@@ -17,6 +17,7 @@ class VisionObjectRecognitionViewController: ViewController {
     
     var crossingState = CrossingState()
     
+    
     // Vision parts
     private var requests = [VNRequest]()
     

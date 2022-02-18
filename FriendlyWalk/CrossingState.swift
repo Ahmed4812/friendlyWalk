@@ -10,7 +10,9 @@ import Foundation
 import AVFoundation
 
 class CrossingState{
+    let SPEAK_UPDATE_TIME: TimeInterval = 5
     var lastResult:String
+    var lastSpoke:Date
     
     let synthesizer = AVSpeechSynthesizer()
     
@@ -21,10 +23,24 @@ class CrossingState{
         
     init(){
         lastResult = ""
+        lastSpoke = Date()
     }
+    
+    
     func update(result: String){
-        lastResult = result
-        speak(toSay: lastResult)
+        let newTime = Date()
+        if #available(iOS 13.0, *) {
+            print(lastSpoke.distance(to: newTime))
+            if(lastSpoke.distance(to: newTime) >= SPEAK_UPDATE_TIME ||
+               result != lastResult){
+                lastSpoke = newTime
+                lastResult = result
+                speak(toSay: lastResult)
+            }
+            
+        } else {
+            lastSpoke = newTime
+        }
         
     }
 }
