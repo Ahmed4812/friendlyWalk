@@ -64,22 +64,22 @@ class VisionObjectRecognitionViewController: ViewController {
                 continue
             }
             // Select only the label with the highest confidence.
-            var topLabelObservation = objectObservation.labels[0]
+            let topLabelObservation = objectObservation.labels[0]
             
             /**
                             This section is not necessary but used to imporve the accuracy only for traffic light
              */
-            var i=0;
-            var labelOfTop = addExtrachar(str: topLabelObservation.identifier)
-            while (labelOfTop[labelOfTop.index(labelOfTop.startIndex, offsetBy: 3)] != "f" && (i < 3) ){
-                i+=1
-                print(labelOfTop[labelOfTop.index(labelOfTop.startIndex, offsetBy: 3)])
-                topLabelObservation = objectObservation.labels[i]
-                labelOfTop = addExtrachar(str: topLabelObservation.identifier)
-            }
-            if i == 3{
-                topLabelObservation = objectObservation.labels[0]
-            }
+//            var i=0;
+//            var labelOfTop = addExtrachar(str: topLabelObservation.identifier)
+//            while (labelOfTop[labelOfTop.index(labelOfTop.startIndex, offsetBy: 3)] != "f" && (i < 3) ){
+//                i+=1
+//                print(labelOfTop[labelOfTop.index(labelOfTop.startIndex, offsetBy: 3)])
+//                topLabelObservation = objectObservation.labels[i]
+//                labelOfTop = addExtrachar(str: topLabelObservation.identifier)
+//            }
+//            if i == 3{
+//                topLabelObservation = objectObservation.labels[0]
+//            }
             /***************************/
             
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(bufferSize.width), Int(bufferSize.height))
@@ -164,16 +164,13 @@ class VisionObjectRecognitionViewController: ViewController {
         var label = identifier
         if (identifier == "traffic_light_red"){
             label = "red"
-            crossingState.update(result: label)
+//            crossingState.update(result: label)
             
         }else if (identifier == "traffic_light_green"){
             label = "green"
-            crossingState.update(result: label)
-        }else if (identifier == "traffic_light_na"){
-            label = "yellow"
-            crossingState.update(result: label)
-
+//            crossingState.update(result: label)
         }
+        crossingState.stateWiseUpdate(result: label)
         
         let formattedString = NSMutableAttributedString(string: String(format: "\(label)\nConfidence:  %.2f", confidence))
         let largeFont = UIFont(name: "Helvetica", size: 24.0)!
