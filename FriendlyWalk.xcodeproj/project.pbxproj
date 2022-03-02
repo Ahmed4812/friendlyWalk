@@ -11,6 +11,8 @@
 		5C08AF6427AA0DA50016D6AB /* friendlyWalkLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C08AF6327AA0DA50016D6AB /* friendlyWalkLogo.png */; };
 		5C08AF6827AA0F930016D6AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C08AF6727AA0F930016D6AB /* Assets.xcassets */; };
 		5C8CD3E927B2081200D95449 /* CrossingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8CD3E827B2081200D95449 /* CrossingState.swift */; };
+		5C99F4A327CC68FD00D71A96 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C99F4A227CC68FD00D71A96 /* NavigationView.swift */; };
+		5C99F4A527CC693B00D71A96 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C99F4A427CC693A00D71A96 /* SettingsView.swift */; };
 		FAB417F62099308400494E9C /* VisionObjectRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB417F52099308400494E9C /* VisionObjectRecognitionViewController.swift */; };
 		FAD5009F1ED668B60074D713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5009E1ED668B60074D713 /* AppDelegate.swift */; };
 		FAD500A11ED668B60074D713 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD500A01ED668B60074D713 /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 		5C08AF6327AA0DA50016D6AB /* friendlyWalkLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friendlyWalkLogo.png; sourceTree = SOURCE_ROOT; };
 		5C08AF6727AA0F930016D6AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		5C8CD3E827B2081200D95449 /* CrossingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossingState.swift; sourceTree = "<group>"; };
+		5C99F4A227CC68FD00D71A96 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		5C99F4A427CC693A00D71A96 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7984D3D3A63BDFC4A07FEF8F /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		C2A2AB60C2A2AB2000000001 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E3CB966204CD821C6969C2A3 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				FAD500A71ED668B60074D713 /* LaunchScreen.storyboard */,
 				5C08AF6327AA0DA50016D6AB /* friendlyWalkLogo.png */,
 				FAD500AA1ED668B60074D713 /* Info.plist */,
+				5C99F4A227CC68FD00D71A96 /* NavigationView.swift */,
+				5C99F4A427CC693A00D71A96 /* SettingsView.swift */,
 			);
 			path = FriendlyWalk;
 			sourceTree = "<group>";
@@ -172,10 +178,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C99F4A527CC693B00D71A96 /* SettingsView.swift in Sources */,
 				FAB417F62099308400494E9C /* VisionObjectRecognitionViewController.swift in Sources */,
 				FAD500A11ED668B60074D713 /* ViewController.swift in Sources */,
 				FAD5009F1ED668B60074D713 /* AppDelegate.swift in Sources */,
 				5C8CD3E927B2081200D95449 /* CrossingState.swift in Sources */,
+				5C99F4A327CC68FD00D71A96 /* NavigationView.swift in Sources */,
 				5C08AF5827AA02A30016D6AB /* TrafficLight.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

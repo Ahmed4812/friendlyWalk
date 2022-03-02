@@ -8,9 +8,12 @@ Contains the view controller for the Breakfast Finder.
 import UIKit
 import AVFoundation
 import Vision
+import SwiftUI
 
+@available(iOS 14.0, *)
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
+    let navigationView = UIHostingController(rootView: NavigationView())
     var bufferSize: CGSize = .zero
     var rootLayer: CALayer! = nil
     
@@ -33,6 +36,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    fileprivate func setupConstraints() {
+        navigationView.view.backgroundColor = UIColor.clear // Needed to not hide other layers
+        navigationView.view.translatesAutoresizingMaskIntoConstraints = false
+        navigationView.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        navigationView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        navigationView.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        navigationView.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
     
     func setupAVCapture() {
@@ -86,6 +98,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         rootLayer = previewView.layer
         previewLayer.frame = rootLayer.bounds
         rootLayer.addSublayer(previewLayer)
+        
+        addChild(navigationView) // Allows embedding the custom SwiftUI view
+        view.addSubview(navigationView.view)
+        setupConstraints()
     }
     
     func startCaptureSession() {

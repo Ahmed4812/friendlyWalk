@@ -11,12 +11,16 @@ import Vision
 
 
 
+@available(iOS 14.0, *)
 class VisionObjectRecognitionViewController: ViewController {
     
     private var detectionOverlay: CALayer! = nil
     
     var crossingState = CrossingState()
     
+    @IBAction func settingButton(_ sender: Any) {
+        print("Setting button")
+    }
     
     // Vision parts
     private var requests = [VNRequest]()
