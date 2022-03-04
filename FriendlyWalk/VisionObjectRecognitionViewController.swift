@@ -168,13 +168,17 @@ class VisionObjectRecognitionViewController: ViewController {
         var label = identifier
         if (identifier == "traffic_light_red"){
             label = "red"
-//            crossingState.update(result: label)
-            
         }else if (identifier == "traffic_light_green"){
             label = "green"
-//            crossingState.update(result: label)
         }
-        crossingState.stateWiseUpdate(result: label)
+        let autoDecide = UserDefaults.standard.bool(forKey: "autoDecide")
+        
+        if autoDecide{
+            crossingState.stateWiseUpdate(result: label)
+        }else{
+            crossingState.update(result: label)
+        }
+        
         
         let formattedString = NSMutableAttributedString(string: String(format: "\(label)\nConfidence:  %.2f", confidence))
         let largeFont = UIFont(name: "Helvetica", size: 24.0)!

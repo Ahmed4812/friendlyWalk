@@ -27,12 +27,9 @@ class CrossingState{
     var currentState: States = .initial
     
     
-    let synthesizer = AVSpeechSynthesizer()
-    
     func speak(toSay: String) {
-        let utterance = AVSpeechUtterance(string: toSay)
         lastSpoke = Date()
-        synthesizer.speak(utterance)
+        synthSpeak(toSay: toSay)
     }
         
     init(){
@@ -156,9 +153,10 @@ class CrossingState{
         if #available(iOS 13.0, *) {
             if((lastSpoke.distance(to: newTime) >= SPEAK_UPDATE_TIME) ||
                result != lastResult){
-                lastSpoke = newTime
-                lastResult = result
-                speak(toSay: lastResult)
+                if (result=="red" || result == "green"){
+                    lastResult = result
+                    speak(toSay: lastResult)
+                }
             }
             
         } else {

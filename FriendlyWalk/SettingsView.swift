@@ -10,21 +10,40 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 struct Settings: View {
+    var buttonHeight = UIScreen.main.bounds.size.height/2.75
+    var buttonWidth = UIScreen.main.bounds.size.width/1.25
     @State private var shareData = false
-    @AppStorage("visualizeDetections") var visualizeDetections = true
-    @AppStorage("showLabels") var showLabels = true
-    @AppStorage("metricUnits") var metricUnits = false
-    @AppStorage("showSpeed") var showSpeed = true
-    @AppStorage("iouThreshold") var iouThreshold = 0.6
-    @AppStorage("confidenceThreshold") var confidenceThreshold = 0.45
+    
+    @AppStorage("autoDecide") var autoDecide = true
+   
     var body: some View {
         VStack {
             List {
-                Text("Basic settings")
+                Text("Decision settings")
                     .font(.title)
-                    .padding(0.5)
+                    .padding(0.5).accessibilityHint("A manue to choose type of decision")
+   
+                Button(action: {
+                    print("Auto")
+                    autoDecide = true
+                    synthSpeak(toSay: "Selected Auto")
+                    
+                }){Text("Auto")}.frame(width: buttonWidth, height: buttonHeight, alignment: .center).accessibilityHint("Decides and informs you automatically when to cross or wait").accessibility(label: Text("Auto Decide"))
+                
+                
+                
+                Button(action: {
+                    print("Second tapped")
+                    autoDecide = false
+                    synthSpeak(toSay: "Selected Manual")
+                    
+                }){Text("Manual")}.frame(width: buttonWidth, height: buttonHeight, alignment: .center).accessibilityHint("Just tells you the state of the traffic light and you make the decision").accessibility(label: Text("Manually Decide"))
+            
+   
             }
+            
             Spacer()
+
             
         }
         .navigationBarTitle("Settings")

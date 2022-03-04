@@ -13,6 +13,7 @@
 		5C8CD3E927B2081200D95449 /* CrossingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8CD3E827B2081200D95449 /* CrossingState.swift */; };
 		5C99F4A327CC68FD00D71A96 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C99F4A227CC68FD00D71A96 /* NavigationView.swift */; };
 		5C99F4A527CC693B00D71A96 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C99F4A427CC693A00D71A96 /* SettingsView.swift */; };
+		5CC7086E27D1A48B00BB99FB /* CustomSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7086D27D1A48B00BB99FB /* CustomSynthesizer.swift */; };
 		FAB417F62099308400494E9C /* VisionObjectRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB417F52099308400494E9C /* VisionObjectRecognitionViewController.swift */; };
 		FAD5009F1ED668B60074D713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5009E1ED668B60074D713 /* AppDelegate.swift */; };
 		FAD500A11ED668B60074D713 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD500A01ED668B60074D713 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 		5C8CD3E827B2081200D95449 /* CrossingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossingState.swift; sourceTree = "<group>"; };
 		5C99F4A227CC68FD00D71A96 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		5C99F4A427CC693A00D71A96 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5CC7086D27D1A48B00BB99FB /* CustomSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSynthesizer.swift; sourceTree = "<group>"; };
 		7984D3D3A63BDFC4A07FEF8F /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		C2A2AB60C2A2AB2000000001 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E3CB966204CD821C6969C2A3 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				FAD500AA1ED668B60074D713 /* Info.plist */,
 				5C99F4A227CC68FD00D71A96 /* NavigationView.swift */,
 				5C99F4A427CC693A00D71A96 /* SettingsView.swift */,
+				5CC7086D27D1A48B00BB99FB /* CustomSynthesizer.swift */,
 			);
 			path = FriendlyWalk;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				FAD500A11ED668B60074D713 /* ViewController.swift in Sources */,
 				FAD5009F1ED668B60074D713 /* AppDelegate.swift in Sources */,
 				5C8CD3E927B2081200D95449 /* CrossingState.swift in Sources */,
+				5CC7086E27D1A48B00BB99FB /* CustomSynthesizer.swift in Sources */,
 				5C99F4A327CC68FD00D71A96 /* NavigationView.swift in Sources */,
 				5C08AF5827AA02A30016D6AB /* TrafficLight.mlmodel in Sources */,
 			);
