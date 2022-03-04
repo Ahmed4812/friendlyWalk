@@ -68,13 +68,17 @@ class CrossingState{
               
             case .wait1:
                 if result == "green"{
-                    currentState = .wait2
-                    lastUpdate=nowTime
-                    
-                    speak(toSay: result)
-                    speak(toSay: "Please Wait")
+                    confirmCnt+=1
+                    if confirmCnt>=2{
+                        currentState = .wait2
+                        lastUpdate=nowTime
+                        speak(toSay: result)
+                        speak(toSay: "Please Wait")
+                        confirmCnt = 0
+                    }
                     break
                 }else if result == "red"{
+                    confirmCnt=0
                     if(lastSpoke.distance(to: nowTime) >= SPEAK_UPDATE_TIME){
                         speak(toSay: result)
                         speak(toSay: "Please Wait")
@@ -91,12 +95,17 @@ class CrossingState{
                 
             case .wait2:
                 if result == "red"{
-                    currentState = .confirmation
-                    speak(toSay: result)
-                    speak(toSay: "Please Wait")
-                    lastUpdate=nowTime
+                    confirmCnt+=1
+                    if confirmCnt>=2{
+                        currentState = .confirmation
+                        speak(toSay: result)
+                        speak(toSay: "Please Wait")
+                        lastUpdate=nowTime
+                        confirmCnt = 0
+                    }
                     break
                 }else if result == "green"{
+                    confirmCnt=0
                     if(lastSpoke.distance(to: nowTime) >= SPEAK_UPDATE_TIME){
                         speak(toSay: result)
                         speak(toSay: "Please Wait")

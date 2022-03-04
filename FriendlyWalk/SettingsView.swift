@@ -21,7 +21,7 @@ struct Settings: View {
             List {
                 Text("Decision settings")
                     .font(.title)
-                    .padding(0.5).accessibilityHint("A manue to choose type of decision")
+                    .padding(0.5).accessibilityHint("A menu to choose type of decision")
    
                 Button(action: {
                     print("Auto")
